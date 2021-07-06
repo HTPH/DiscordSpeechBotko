@@ -177,6 +177,7 @@ const PREFIX = '!';
 const _CMD_HELP        = PREFIX + 'ช่วยด้วย';
 const _CMD_JOIN        = PREFIX + 'เข้ามา';
 const _CMD_LEAVE       = PREFIX + 'ออกไป';
+const _CMD_LEAVE       = PREFIX + 'ไอ้ตู่ออกไป';
 const _CMD_PLAY        = PREFIX + 'play';
 const _CMD_PAUSE       = PREFIX + 'pause';
 const _CMD_RESUME      = PREFIX + 'resume';
