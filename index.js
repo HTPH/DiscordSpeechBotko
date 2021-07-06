@@ -174,7 +174,7 @@ discordClient.on('ready', () => {
 discordClient.login(DISCORD_TOK)
 
 const PREFIX = '!';
-const _CMD_HELP        = PREFIX + 'help';
+const _CMD_HELP        = PREFIX + 'ช่วยด้วย';
 const _CMD_JOIN        = PREFIX + 'เข้ามา';
 const _CMD_LEAVE       = PREFIX + 'ออกไป';
 const _CMD_PLAY        = PREFIX + 'play';
@@ -283,6 +283,8 @@ discordClient.on('message', async (msg) => {
 function getHelpString() {
     let out = '**VOICE COMMANDS:**\n'
         out += '```'
+        out += 'เข้ามา'
+        out += 'ออกไป'
         out += 'music help\n'
         out += 'music play [random, favorites, <genre> or query]\n'
         out += 'music skip\n'
