@@ -283,8 +283,8 @@ discordClient.on('message', async (msg) => {
 function getHelpString() {
     let out = '**VOICE COMMANDS:**\n'
         out += '```'
-        out += 'เข้ามา'
-        out += 'ออกไป'
+        out += 'เข้ามา\n'
+        out += 'ออกไป\n'
         out += 'music help\n'
         out += 'music play [random, favorites, <genre> or query]\n'
         out += 'music skip\n'
