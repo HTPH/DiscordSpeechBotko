@@ -174,7 +174,7 @@ discordClient.on('ready', () => {
 discordClient.login(DISCORD_TOK)
 
 const PREFIX = '!';
-const _CMD_HELP        = PREFIX + 'ช่วยด้วย';
+const _CMD_HELP        = PREFIX + 'help';
 const _CMD_JOIN        = PREFIX + 'เข้ามา';
 const _CMD_LEAVE       = PREFIX + 'ออกไป';
 const _CMD_PLAY        = PREFIX + 'play';
@@ -297,7 +297,7 @@ function getHelpString() {
 
         out += '**TEXT COMMANDS:**\n'
         out += '```'
-        out += _CMD_ช่วยด้วย + '\n'
+        out += _CMD_help + '\n'
         out += _CMD_เข้ามา + '/' + _CMD_ออกไป + '\n'
         out += _CMD_PLAY + ' [query]\n'
         out += _CMD_GENRE + ' [name]\n'
