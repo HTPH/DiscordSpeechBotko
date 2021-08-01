@@ -284,7 +284,6 @@ function getHelpString() {
     let out = '**VOICE COMMANDS:**\n'
         out += '```'
         out += 'music help\n'
-        out += 'music get out\n'
         out += 'music play [random, favorites, <genre> or query]\n'
         out += 'music skip\n'
         out += 'music pause/resume\n'
@@ -539,15 +538,7 @@ async function music_message(message, mapKey) {
             }, (msg)=>{
                 if (msg && msg.length) message.channel.send(msg);
             })
-
-        } else if (args[0] == _CMD_LEAVE) {
             
-            leave(mapKey, ()=>{
-                message.react(EMOJI_GREEN_CIRCLE)
-            }, (msg)=>{
-                if (msg && msg.length) message.channel.send(msg);
-            })
-
         } else if (args[0] == _CMD_PAUSE) {
 
             pauseMusic(mapKey, ()=>{
