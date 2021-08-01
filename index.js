@@ -248,8 +248,6 @@ discordClient.on('message', async (msg) => {
         } else if (msg.content.trim().toLowerCase() == _CMD_HELP) {
             msg.reply(getHelpString());
         }
-        } else if (msg.content.trim().toLowerCase() == _CMD_LEAVE) {
-        }
         else if (msg.content.trim().toLowerCase() == _CMD_DEBUG) {
             console.log('toggling debug mode')
             let val = guildMap.get(mapKey);
@@ -404,6 +402,9 @@ function process_commands_query(query, mapKey, userid) {
         switch(cmd) {
             case 'help':
                 out = _CMD_HELP;
+                break;
+            case 'getout':
+                out = _CMD_LEAVE;
                 break;
             case 'skip':
                 out = _CMD_SKIP;
