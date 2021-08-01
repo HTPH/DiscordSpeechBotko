@@ -248,6 +248,8 @@ discordClient.on('message', async (msg) => {
         } else if (msg.content.trim().toLowerCase() == _CMD_HELP) {
             msg.reply(getHelpString());
         }
+        } else if (msg.content.trim().toLowerCase() == _CMD_LEAVE) {
+        }
         else if (msg.content.trim().toLowerCase() == _CMD_DEBUG) {
             console.log('toggling debug mode')
             let val = guildMap.get(mapKey);
@@ -284,6 +286,7 @@ function getHelpString() {
     let out = '**VOICE COMMANDS:**\n'
         out += '```'
         out += 'music help\n'
+        out += 'music getout'
         out += 'music play [random, favorites, <genre> or query]\n'
         out += 'music skip\n'
         out += 'music pause/resume\n'
