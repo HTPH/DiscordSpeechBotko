@@ -368,7 +368,7 @@ function speak_impl(voice_Connection, mapKey) {
             const duration = buffer.length / 48000 / 4;
             console.log("duration: " + duration)
 
-            if (duration < 1.0 || duration > 19) { // 20 seconds max dur
+            if (duration < 0.6 duration > 19) { // 20 seconds max dur
                 console.log("TOO SHORT / TOO LONG; SKPPING")
                 return;
             }
@@ -535,6 +535,14 @@ async function music_message(message, mapKey) {
         } else if (args[0] == _CMD_SKIP) {
 
             skipMusic(mapKey, ()=>{
+                message.react(EMOJI_GREEN_CIRCLE)
+            }, (msg)=>{
+                if (msg && msg.length) message.channel.send(msg);
+            })
+
+        } else if (args[0] == _CMD_LEAVE) {
+            
+            leave(mapKey, ()=>{
                 message.react(EMOJI_GREEN_CIRCLE)
             }, (msg)=>{
                 if (msg && msg.length) message.channel.send(msg);
@@ -831,6 +839,16 @@ function skipMusic(mapKey, cbok, cberr) {
     let val = guildMap.get(mapKey);
     if (!val.currentPlayingTitle) {
         cberr('Nothing to skip');
+    } else {
+        if (val.musicDispatcher) val.musicDispatcher.end();
+        cbok()
+    }
+}
+
+function leave(mapKey, cbok, cberr) {
+    let val = guildMap.get(mapKey);
+    if (!val.currentPlayingTitle) {
+        cberr('Cannot leave because not connected.');
     } else {
         if (val.musicDispatcher) val.musicDispatcher.end();
         cbok()
