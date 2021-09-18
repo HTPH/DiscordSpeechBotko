@@ -174,10 +174,10 @@ discordClient.on('ready', () => {
 discordClient.login(DISCORD_TOK)
 
 const PREFIX = '[]';
-const _CMD_HELP        = PREFIX + 'ช่วยด้วย';
-const _CMD_JOIN        = PREFIX + 'เข้ามา';
-const _CMD_LEAVE       = PREFIX + 'ออกไป';
-const _CMD_PLAY        = PREFIX + 'play';
+const _CMD_HELP        = PREFIX + 'ช่วยด้วย','h';
+const _CMD_JOIN        = PREFIX + 'เข้ามา','j';
+const _CMD_LEAVE       = PREFIX + 'ออกไป','l';
+const _CMD_PLAY        = PREFIX + 'play','p';
 const _CMD_PAUSE       = PREFIX + 'pause';
 const _CMD_RESUME      = PREFIX + 'resume';
 const _CMD_SHUFFLE     = PREFIX + 'shuffle';
@@ -211,6 +211,10 @@ const GENRES = {
 }
 
 const guildMap = new Map();
+
+client.on("ready", () => {
+    client.user.setPresence({ activity: {name: "[]help AND []play"}})
+})
 
 discordClient.on('message', async (msg) => {
     try {
