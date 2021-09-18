@@ -169,7 +169,7 @@ const Discord = require('discord.js')
 const DISCORD_MSG_LIMIT = 2000;
 const discordClient = new Discord.Client()
 client.on("ready", () => {
-  client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type: "LISTENING" })
+  client.user.setPresence({ activity: {name:"[]ช่วยด้วย AND []play" }}, { type: "LISTENING" })
     
 })
 discordClient.login(DISCORD_TOK)
@@ -189,7 +189,7 @@ const _CMD_GENRE       = PREFIX + 'genre';
 const _CMD_GENRES      = PREFIX + 'genres';
 const _CMD_CLEAR       = PREFIX + 'clear';
 const _CMD_RANDOM      = PREFIX + 'random';
-const _CMD_SKIP        = PREFIX + 'skip';
+const _CMD_SKIP        = PREFIX + 'skip','s';
 const _CMD_QUEUE       = PREFIX + 'list';
 const _CMD_DEBUG       = PREFIX + 'debug';
 const _CMD_TEST        = PREFIX + 'hello';
