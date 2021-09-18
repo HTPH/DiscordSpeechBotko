@@ -169,11 +169,9 @@ const Discord = require('discord.js')
 const DISCORD_MSG_LIMIT = 2000;
 const discordClient = new Discord.Client()
 client.on("ready", () => {
-  console.log(`${client.user.username} ready!`);
-  client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type: "LISTENING" });
-});
-client.on("warn", (info) => console.log(info));
-client.on("error", console.error);
+  console.log(`${client.user.username} ready!`)
+  client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type: "LISTENING" })
+})
 discordClient.login(DISCORD_TOK)
 
 const PREFIX = '[]';
