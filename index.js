@@ -171,6 +171,13 @@ const discordClient = new Discord.Client()
 discordClient.on('ready', () => {
     console.log(`Logged in as ${discordClient.user.tag}!`)
 })
+client.on("ready", () => {
+  console.log(`${client.user.username} ready!`);
+  client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type: "LISTENING" });
+});
+client.on("warn", (info) => console.log(info));
+client.on("error", console.error);
+
 discordClient.login(DISCORD_TOK)
 
 const PREFIX = '[]';
@@ -212,9 +219,6 @@ const GENRES = {
 
 const guildMap = new Map();
 
-client.on("ready", () => {
-    client.user.setPresence({ activity: {name: "[]help AND []play"}})
-})
 
 discordClient.on('message', async (msg) => {
     try {
