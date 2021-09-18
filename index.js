@@ -169,7 +169,7 @@ const Discord = require('discord.js')
 const DISCORD_MSG_LIMIT = 2000;
 const discordClient = new Discord.Client()
 client.on("ready", () => {
-  client.user.setPresence({ activity: {name:"[]ช่วยด้วย AND []play" }}, { type: "LISTENING" })
+  client.user.setPresence({ activity: {name:"[]ช่วยด้วย AND []play" }})
     
 })
 discordClient.login(DISCORD_TOK)
