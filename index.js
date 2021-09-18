@@ -168,16 +168,19 @@ function updateWitAIAppLang(appID, lang, cb) {
 const Discord = require('discord.js')
 const DISCORD_MSG_LIMIT = 2000;
 const discordClient = new Discord.Client()
-discordClient.on('ready', () => {
-    console.log(`Logged in as ${discordClient.user.tag}!`)
-})
+client.on("ready", () => {
+  console.log(`${client.user.username} ready!`);
+  client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type: "LISTENING" });
+});
+client.on("warn", (info) => console.log(info));
+client.on("error", console.error);
 discordClient.login(DISCORD_TOK)
 
 const PREFIX = '[]';
-const _CMD_HELP        = PREFIX + 'ช่วยด้วย','h';
-const _CMD_JOIN        = PREFIX + 'เข้ามา','j';
-const _CMD_LEAVE       = PREFIX + 'ออกไป','l';
-const _CMD_PLAY        = PREFIX + 'play','p';
+const _CMD_HELP        = PREFIX + 'ช่วยด้วย';
+const _CMD_JOIN        = PREFIX + 'เข้ามา';
+const _CMD_LEAVE       = PREFIX + 'ออกไป';
+const _CMD_PLAY        = PREFIX + 'play';
 const _CMD_PAUSE       = PREFIX + 'pause';
 const _CMD_RESUME      = PREFIX + 'resume';
 const _CMD_SHUFFLE     = PREFIX + 'shuffle';
@@ -188,7 +191,7 @@ const _CMD_GENRE       = PREFIX + 'genre';
 const _CMD_GENRES      = PREFIX + 'genres';
 const _CMD_CLEAR       = PREFIX + 'clear';
 const _CMD_RANDOM      = PREFIX + 'random';
-const _CMD_SKIP        = PREFIX + 'skip','s';
+const _CMD_SKIP        = PREFIX + 'skip';
 const _CMD_QUEUE       = PREFIX + 'list';
 const _CMD_DEBUG       = PREFIX + 'debug';
 const _CMD_TEST        = PREFIX + 'hello';
