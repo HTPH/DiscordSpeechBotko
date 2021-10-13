@@ -173,10 +173,10 @@ discordClient.on('ready', () => {
 })
 discordClient.login(DISCORD_TOK)
 
-const PREFIX = '[]';
-const _CMD_HELP        = PREFIX + 'ช่วยด้วย';
-const _CMD_JOIN        = PREFIX + 'เข้ามา';
-const _CMD_LEAVE       = PREFIX + 'ออกไป';
+const PREFIX = '!';
+const _CMD_HELP        = PREFIX + 'help';
+const _CMD_JOIN        = PREFIX + 'join';
+const _CMD_LEAVE       = PREFIX + 'leave';
 const _CMD_PLAY        = PREFIX + 'play';
 const _CMD_PAUSE       = PREFIX + 'pause';
 const _CMD_RESUME      = PREFIX + 'resume';
@@ -211,7 +211,6 @@ const GENRES = {
 }
 
 const guildMap = new Map();
-
 
 discordClient.on('message', async (msg) => {
     try {
@@ -368,7 +367,7 @@ function speak_impl(voice_Connection, mapKey) {
             const duration = buffer.length / 48000 / 4;
             console.log("duration: " + duration)
 
-            if (duration < 0.6 || duration > 19) { // 20 seconds max dur
+            if (duration < 1.0 || duration > 19) { // 20 seconds max dur
                 console.log("TOO SHORT / TOO LONG; SKPPING")
                 return;
             }
@@ -402,9 +401,6 @@ function process_commands_query(query, mapKey, userid) {
         switch(cmd) {
             case 'help':
                 out = _CMD_HELP;
-                break;
-            case 'get out':
-                out = _CMD_LEAVE;
                 break;
             case 'skip':
                 out = _CMD_SKIP;
@@ -539,7 +535,7 @@ async function music_message(message, mapKey) {
             }, (msg)=>{
                 if (msg && msg.length) message.channel.send(msg);
             })
-            
+
         } else if (args[0] == _CMD_PAUSE) {
 
             pauseMusic(mapKey, ()=>{
@@ -837,16 +833,6 @@ function skipMusic(mapKey, cbok, cberr) {
     }
 }
 
-function leave(mapKey, cbok, cberr) {
-    let val = guildMap.get(mapKey);
-    if (!val.currentPlayingTitle) {
-        cberr('Cannot leave because not connected.');
-    } else {
-        if (val.musicDispatcher) val.musicDispatcher.end();
-        cbok()
-    }
-}
-
 function pauseMusic(mapKey, cbok, cberr) {
     let val = guildMap.get(mapKey);
     if (!val.currentPlayingTitle) {
@@ -943,7 +929,7 @@ async function transcribe_gspeech(buffer) {
       const config = {
         encoding: 'LINEAR16',
         sampleRateHertz: 48000,
-        languageCode: 'en-US',  // https://cloud.google.com/speech-to-text/docs/languages
+        languageCode: 'th-TH',  // https://cloud.google.com/speech-to-text/docs/languages
       };
       const request = {
         audio: audio,
